@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="BaseText">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Regular 스타일 -->
+    <style name="title26" parent="BaseText">
+        <item name="android:fontFamily">@font/notosanskrregular</item>
+        <item name="android:textSize">26dp</item>
+    </style>
+
+    <style name="title24" parent="BaseText">
+        <item name="android:fontFamily">@font/notosanskrregular</item>
+        <item name="android:textSize">24dp</item>
+    </style>
+
+    <style name="headline" parent="BaseText">
+        <item name="android:fontFamily">@font/notosanskrregular</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="body18" parent="BaseText">
+        <item name="android:fontFamily">@font/notosanskrregular</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="body16" parent="BaseText">
+        <item name="android:fontFamily">@font/notosanskrregular</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="description" parent="BaseText">
+        <item name="android:fontFamily">@font/notosanskrregular</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="caption12" parent="BaseText">
+        <item name="android:fontFamily">@font/notosanskrregular</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="caption10" parent="BaseText">
+        <item name="android:fontFamily">@font/notosanskrregular</item>
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <!-- Bold 스타일 -->
+    <style name="title26bold" parent="title26">
+        <item name="android:fontFamily">@font/notosansbold</item>
+    </style>
+
+    <style name="title24bold" parent="title24">
+        <item name="android:fontFamily">@font/notosansbold</item>
+    </style>
+
+    <style name="headlinebold" parent="headline">
+        <item name="android:fontFamily">@font/notosansbold</item>
+    </style>
+
+    <style name="body18bold" parent="body18">
+        <item name="android:fontFamily">@font/notosansbold</item>
+    </style>
+
+    <style name="body16bold" parent="body16">
+        <item name="android:fontFamily">@font/notosansbold</item>
+    </style>
+
+    <style name="descriptionbold" parent="description">
+        <item name="android:fontFamily">@font/notosansbold</item>
+    </style>
+
+    <style name="caption12bold" parent="caption12">
+        <item name="android:fontFamily">@font/notosansbold</item>
+    </style>
+
+    <style name="caption10bold" parent="caption10">
+        <item name="android:fontFamily">@font/notosansbold</item>
+    </style>
+
+</resources>
