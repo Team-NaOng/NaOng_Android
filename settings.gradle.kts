@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "NaOng_Android"
 include(":app")
- 
+include(":presentation")
