@@ -79,4 +79,8 @@
         <item name="android:fontFamily">@font/notosansbold</item>
     </style>
 
+    <style name="Widget.BottomNavigationView.NoRipple" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemRippleColor">@android:color/transparent</item>
+    </style>
+
 </resources>
