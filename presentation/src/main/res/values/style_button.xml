@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseButton">
+        <attr name="android:enabled" />
+        <attr name="android:textAppearance" />
+        <attr name="android:textColor" />
+        <attr name="android:textSize" />
+        <attr name="android:text" />
+        <attr name="android:ellipsize" />
+        <attr name="android:maxLines" />
+        <attr name="android:lineBreakWordStyle" />
+    </declare-styleable>
+
+    <style name="BaseButton">
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:paddingVertical">8dp</item>
+    </style>
+
+    <style name="ButtonCircleStyle" parent="BaseButton">
+        <item name="android:minHeight">49dp</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:background">@drawable/button_circle</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAppearance">@style/description</item>
+    </style>
+
+    <style name="ButtonSquareStyle" parent="ButtonCircleStyle">
+        <item name="android:minHeight">41dp</item>
+        <item name="android:paddingHorizontal">12dp</item>
+        <item name="android:background">@drawable/button_square</item>
+    </style>
+</resources>
