@@ -22,34 +22,37 @@ abstract class BaseButton @JvmOverloads constructor(
     init {
         orientation = HORIZONTAL
 
-        val attributes = context.obtainStyledAttributes(
-            attrs,
-            R.styleable.BaseButton,
-            defStyleAttr,
-            defStyleRes
-        )
+        with(
+            context.obtainStyledAttributes(
+                attrs,
+                R.styleable.BaseButton,
+                defStyleAttr,
+                defStyleRes
+            )
+        ) {
+            val buttonEnabled = getBoolean(R.styleable.BaseButton_android_enabled, true)
+            val buttonText = getString(R.styleable.BaseButton_android_text)
+            val textAppearanceRes =
+                getResourceId(R.styleable.BaseButton_android_textAppearance, INVALID_RES_ID)
+            val textSizePx = getDimension(R.styleable.BaseButton_android_textSize, INVALID_SIZE)
+            val textColorStateList = getColorStateList(R.styleable.BaseButton_android_textColor)
+            val ellipsizeMode = getInt(R.styleable.BaseButton_android_ellipsize, 3)
+            val maxLineCount = getInt(R.styleable.BaseButton_android_maxLines, 2)
 
-        val buttonEnabled = attributes.getBoolean(R.styleable.BaseButton_android_enabled, true)
-        val buttonText = attributes.getString(R.styleable.BaseButton_android_text)
-        val textAppearanceRes = attributes.getResourceId(R.styleable.BaseButton_android_textAppearance, INVALID_RES_ID)
-        val textSizePx = attributes.getDimension(R.styleable.BaseButton_android_textSize, INVALID_SIZE)
-        val textColorStateList = attributes.getColorStateList(R.styleable.BaseButton_android_textColor)
-        val ellipsizeMode = attributes.getInt(R.styleable.BaseButton_android_ellipsize, 3)
-        val maxLineCount = attributes.getInt(R.styleable.BaseButton_android_maxLines, 2)
+            recycle()
 
-        attributes.recycle()
+            isEnabled = buttonEnabled
 
-        isEnabled = buttonEnabled
-
-        setupTextView(
-            context = context,
-            text = buttonText,
-            textAppearance = if (textAppearanceRes == INVALID_RES_ID) null else textAppearanceRes,
-            textSize = if (textSizePx == INVALID_SIZE) null else textSizePx,
-            textColor = textColorStateList,
-            ellipsize = ellipsizeMode,
-            maxLines = maxLineCount
-        )
+            setupTextView(
+                context = context,
+                text = buttonText,
+                textAppearance = if (textAppearanceRes == INVALID_RES_ID) null else textAppearanceRes,
+                textSize = if (textSizePx == INVALID_SIZE) null else textSizePx,
+                textColor = textColorStateList,
+                ellipsize = ellipsizeMode,
+                maxLines = maxLineCount
+            )
+        }
     }
 
     private fun setupTextView(
@@ -81,7 +84,7 @@ abstract class BaseButton @JvmOverloads constructor(
                 }
             }
             maxLines?.let { this.maxLines = it }
-            text.also { this.text = it }
+            this.text = text
             if (underline) paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
         }
         addView(buttonTextView)
