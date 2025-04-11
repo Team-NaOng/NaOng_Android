@@ -3,7 +3,10 @@ package com.example.presentation
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class OnboardingPagerAdapter(activity: OnboardingActivity) : FragmentStateAdapter(activity) {
+class OnboardingPagerAdapter(
+    activity: OnboardingActivity
+) : FragmentStateAdapter(activity) {
+
     private val layouts = listOf(
         R.layout.page_welcome,
         R.layout.page_location,
@@ -16,7 +19,7 @@ class OnboardingPagerAdapter(activity: OnboardingActivity) : FragmentStateAdapte
     override fun getItemCount(): Int = layouts.size
 
     override fun createFragment(position: Int): Fragment {
-        val isLast = position == layouts.size - 1
+        val isLast = position == layouts.lastIndex
         return OnboardingFragment.newInstance(layouts[position], isLast)
     }
 }
