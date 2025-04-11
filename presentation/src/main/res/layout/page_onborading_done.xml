@@ -16,24 +16,25 @@
 
     <TextView
         android:id="@+id/textViewSmileNaongDesc"
-        style="@style/body16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:includeFontPadding="false"
         android:text="모든 설명이 끝났어요. \n 그럼 이제 할 일을 만들러 가볼까요?"
+        android:textAppearance="@style/body16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
-        style="@style/description"
+    <com.example.presentation.button.ButtonCircle
+        android:id="@+id/buttonOnboardingFinish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/secondary"
         android:text="입장하기"
+        android:textAppearance="@style/description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

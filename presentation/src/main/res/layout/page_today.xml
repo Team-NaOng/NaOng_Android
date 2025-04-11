@@ -7,36 +7,39 @@
 
     <TextView
         android:id="@+id/textViewTitleWelcomeNaong"
-        style="@style/title24bold"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
         android:text="오늘 정보"
+        android:textAppearance="@style/title24bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewSub1WelcomeNaong"
-        style="@style/body16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
         android:text="오늘 날씨가 궁금하신가요?"
+        android:textAppearance="@style/body16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitleWelcomeNaong" />
 
     <TextView
         android:id="@+id/textViewSub2WelcomeNaong"
-        style="@style/body16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="12dp"
+        android:includeFontPadding="false"
         android:text="하루를 시작하기 전에 날씨와 공기질을 확인하세요."
+        android:textAppearance="@style/body16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSub1WelcomeNaong" />
@@ -44,21 +47,23 @@
 
     <TextView
         android:id="@+id/textViewSub3WelcomeNaong"
-        style="@style/body16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="12dp"
+        android:includeFontPadding="false"
         android:text="매일매일 바뀌는 나옹이의 귀여운 한마디가 \n 힘이 될 거예요!"
+        android:textAppearance="@style/body16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSub2WelcomeNaong" />
 
 
     <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="217dp"
+        android:layout_height="433dp"
         android:layout_marginVertical="40dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/ic_mockup_step3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
