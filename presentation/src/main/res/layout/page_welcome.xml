@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/textViewTitleWelcomeNaong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:text="환영해요 나옹!"
+        android:textAppearance="@style/title24bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSub1WelcomeNaong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:text="안녕하세요! 저는 나옹이에요."
+        android:textAppearance="@style/body16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleWelcomeNaong" />
+
+    <TextView
+        android:id="@+id/textViewSub2WelcomeNaong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:includeFontPadding="false"
+        android:text="앞으로 당신의 할 일을 꼼꼼하게 챙겨주고, \n 중요한 일정도 잊지 않도록 도와줄게요."
+        android:textAppearance="@style/body16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSub1WelcomeNaong" />
+
+
+    <TextView
+        android:id="@+id/textViewSub3WelcomeNaong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:includeFontPadding="false"
+        android:text="매일 더 편리하게 하루를 관리할 수 있도록 함께해요!"
+        android:textAppearance="@style/body16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSub2WelcomeNaong" />
+
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="167dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_naong_7x"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewSub3WelcomeNaong" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
