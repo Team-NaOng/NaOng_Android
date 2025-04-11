@@ -13,7 +13,7 @@ class OnboardingPagerAdapter(
         R.layout.page_time,
         R.layout.page_today,
         R.layout.page_calendar,
-        R.layout.page_onborading_done,
+        R.layout.page_onboarding_done,
     )
 
     override fun getItemCount(): Int = layouts.size

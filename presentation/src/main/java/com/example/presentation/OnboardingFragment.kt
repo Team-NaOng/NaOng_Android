@@ -30,7 +30,7 @@ class OnboardingFragment : Fragment() {
         val layoutId = requireArguments().getInt(ARG_LAYOUT_RES_ID)
         val isLast = requireArguments().getBoolean(ARG_IS_LAST)
 
-        return if (isLast && layoutId == R.layout.page_onborading_done) {
+        return if (isLast && layoutId == R.layout.page_onboarding_done) {
             val binding = PageOnboradingDoneBinding.inflate(inflater, container, false)
             binding.buttonOnboardingFinish.setOnClickListener {
                 (activity as? OnboardingActivity)?.finishOnboarding()
