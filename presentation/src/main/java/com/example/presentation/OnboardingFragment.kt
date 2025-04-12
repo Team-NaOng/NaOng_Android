@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.presentation.databinding.PageOnboradingDoneBinding
+import com.example.presentation.databinding.PageOnboardingDoneBinding
 
 class OnboardingFragment : Fragment() {
 
@@ -31,7 +31,7 @@ class OnboardingFragment : Fragment() {
         val isLast = requireArguments().getBoolean(ARG_IS_LAST)
 
         return if (isLast && layoutId == R.layout.page_onboarding_done) {
-            val binding = PageOnboradingDoneBinding.inflate(inflater, container, false)
+            val binding = PageOnboardingDoneBinding.inflate(inflater, container, false)
             binding.buttonOnboardingFinish.setOnClickListener {
                 (activity as? OnboardingActivity)?.finishOnboarding()
             }
