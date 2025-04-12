@@ -16,8 +16,22 @@ class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
     private lateinit var adapter: OnboardingPagerAdapter
-     private val indicatorCount
-         get() = adapter.itemCount - 1 // 마지막 페이지 제외한 인디케이터 수
+
+    private val indicatorCount
+        get() = adapter.itemCount - 1 // 마지막 페이지 제외한 인디케이터 수
+
+    private val pageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            super.onPageSelected(position)
+
+            if (position >= indicatorCount) {
+                binding.layoutDotIndicator.visibility = View.GONE
+            } else {
+                binding.layoutDotIndicator.visibility = View.VISIBLE
+                updateIndicator(position)
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,18 +52,12 @@ class OnboardingActivity : AppCompatActivity() {
         createIndicators(indicatorCount)
         updateIndicator(0)
 
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
+        binding.viewPager.registerOnPageChangeCallback(pageChangeCallback)
+    }
 
-                if (position >= indicatorCount) {
-                    binding.layoutDotIndicator.visibility = View.GONE
-                } else {
-                    binding.layoutDotIndicator.visibility = View.VISIBLE
-                    updateIndicator(position)
-                }
-            }
-        })
+    override fun onDestroy() {
+        binding.viewPager.unregisterOnPageChangeCallback(pageChangeCallback)
+        super.onDestroy()
     }
 
     private fun createIndicators(count: Int) {
