@@ -65,13 +65,7 @@ class OnboardingActivity : AppCompatActivity() {
 
         repeat(count) {
             val dot = ImageView(this).apply {
-                val sizeInDp = 8
-                val sizeInPx = (sizeInDp * resources.displayMetrics.density).toInt()
-                val marginInPx = (8 * resources.displayMetrics.density).toInt()
-
-                layoutParams = LinearLayout.LayoutParams(sizeInPx, sizeInPx).apply {
-                    marginEnd = marginInPx
-                }
+                layoutParams = getIndicatorParams(isSelected = false)
                 setImageResource(R.drawable.bg_dot_normal)
             }
             binding.layoutDotIndicator.addView(dot)
@@ -82,19 +76,26 @@ class OnboardingActivity : AppCompatActivity() {
         for (i in 0 until binding.layoutDotIndicator.childCount) {
             val imageView = binding.layoutDotIndicator.getChildAt(i) as ImageView
             val isSelected = i == position
-
-            val sizeInDp = if (isSelected) 24 else 8
-            val sizeInPx = (sizeInDp * resources.displayMetrics.density).toInt()
-            val marginInPx = (8 * resources.displayMetrics.density).toInt()
-
-            imageView.layoutParams = LinearLayout.LayoutParams(sizeInPx, sizeInPx).apply {
-                marginEnd = marginInPx
-            }
+            imageView.layoutParams = getIndicatorParams(isSelected)
 
             imageView.setImageResource(
                 if (isSelected) R.drawable.ic_naong_shadow
                 else R.drawable.bg_dot_normal
             )
+        }
+    }
+
+    // 공통으로 사용하는 Indicator LayoutParams 생성 함수
+    private fun getIndicatorParams(isSelected: Boolean): LinearLayout.LayoutParams {
+        val sizeInPx = if (isSelected)
+            resources.getDimensionPixelSize(R.dimen.indicator_dot_selected_size)
+        else
+            resources.getDimensionPixelSize(R.dimen.indicator_dot_size)
+
+        val marginInPx = resources.getDimensionPixelSize(R.dimen.indicator_dot_margin)
+
+        return LinearLayout.LayoutParams(sizeInPx, sizeInPx).apply {
+            marginEnd = marginInPx
         }
     }
 

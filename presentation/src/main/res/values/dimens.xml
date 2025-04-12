@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="indicator_dot_size">8dp</dimen>
+    <dimen name="indicator_dot_selected_size">24dp</dimen>
+    <dimen name="indicator_dot_margin">8dp</dimen>
+</resources>
