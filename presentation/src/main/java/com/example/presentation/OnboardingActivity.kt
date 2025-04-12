@@ -16,7 +16,8 @@ class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
     private lateinit var adapter: OnboardingPagerAdapter
-    private val indicatorCount = 5 // 마지막 페이지 제외한 인디케이터 수
+     private val indicatorCount
+         get() = adapter.itemCount - 1 // 마지막 페이지 제외한 인디케이터 수
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
