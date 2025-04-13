@@ -16,6 +16,8 @@ class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnboardingBinding
     private lateinit var adapter: OnboardingPagerAdapter
+    
+    private var previousIndicatorIndex = -1
 
     private val indicatorCount
         get() = adapter.itemCount - 1 // 마지막 페이지 제외한 인디케이터 수
@@ -73,16 +75,23 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     private fun updateIndicator(position: Int) {
-        for (i in 0 until binding.layoutDotIndicator.childCount) {
-            val imageView = binding.layoutDotIndicator.getChildAt(i) as ImageView
-            val isSelected = i == position
-            imageView.layoutParams = getIndicatorParams(isSelected)
+        if (position == previousIndicatorIndex) return
 
-            imageView.setImageResource(
-                if (isSelected) R.drawable.ic_naong_shadow
-                else R.drawable.bg_dot_normal
-            )
+        // 이전 인디케이터 비활성화
+        val prevView = binding.layoutDotIndicator.getChildAt(previousIndicatorIndex) as? ImageView
+        prevView?.apply {
+            layoutParams = getIndicatorParams(false)
+            setImageResource(R.drawable.bg_dot_normal)
         }
+
+        // 현재 인디케이터 활성화
+        val currentView = binding.layoutDotIndicator.getChildAt(position) as? ImageView
+        currentView?.apply {
+            layoutParams = getIndicatorParams(true)
+            setImageResource(R.drawable.ic_naong_shadow)
+        }
+
+        previousIndicatorIndex = position
     }
 
     // 공통으로 사용하는 Indicator LayoutParams 생성 함수
