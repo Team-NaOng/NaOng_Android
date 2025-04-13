@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewTitleWelcomeNaong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:text="위치 할 일 관리"
+        android:textAppearance="@style/title24bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewSub1WelcomeNaong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:text="외출할 때 중요한 일을 깜빡할까 걱정되시나요?"
+        android:textAppearance="@style/body16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleWelcomeNaong" />
+
+    <TextView
+        android:id="@+id/textViewSub2WelcomeNaong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:includeFontPadding="false"
+        android:text="지정한 위치를 떠날 때, 자동으로 알림을 받아 \n 할 일을 잊지 않도록 설정해 보세요."
+        android:textAppearance="@style/body16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSub1WelcomeNaong" />
+
+
+    <TextView
+        android:id="@+id/textViewSub3WelcomeNaong"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:includeFontPadding="false"
+        android:text="집을 나설 때 챙겨야 할 물건이 있다면, \n 출발할 때 알림을 받을 수 있어요."
+        android:textAppearance="@style/body16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSub2WelcomeNaong" />
+
+
+    <ImageView
+        android:layout_width="217dp"
+        android:layout_height="433dp"
+        android:layout_marginVertical="40dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_mockup_step1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewSub3WelcomeNaong" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
