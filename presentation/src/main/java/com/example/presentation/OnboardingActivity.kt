@@ -109,7 +109,7 @@ class OnboardingActivity : AppCompatActivity() {
     }
 
     fun finishOnboarding() {
-        SharedPrefUtil.setFirstLaunchCompleted(this)
+        SharedPrefUtil.getInstance(this).setFirstLaunchCompleted()
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
