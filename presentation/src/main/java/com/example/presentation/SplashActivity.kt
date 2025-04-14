@@ -17,8 +17,8 @@ class SplashActivity : AppCompatActivity() {
         lifecycleScope.launch {
             delay(3000)
 
-            val isFirst = SharedPrefUtil.isFirstLaunch(this@SplashActivity)
-            val intent = if (!isFirst) {
+            val isFirst = SharedPrefUtil.getInstance(this@SplashActivity).isFirstLaunch()
+            val intent = if (isFirst) {
                 Intent(this@SplashActivity, OnboardingActivity::class.java)
             } else {
                 Intent(this@SplashActivity, MainActivity::class.java)
