@@ -100,12 +100,6 @@ abstract class BaseButton @JvmOverloads constructor(
         buttonTextView?.isPressed = pressed
     }
 
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        removeAllViews()
-        buttonTextView = null
-    }
-
     companion object {
         private const val INVALID_RES_ID = -1
         private const val INVALID_SIZE = -1f
