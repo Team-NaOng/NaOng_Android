@@ -20,6 +20,9 @@ class SlidingTabToggleView @JvmOverloads constructor(
     private val binding: SlidingTabToggleViewBinding
     private var selectedTab: Tab = Tab.LOCATION
 
+    private var iconColorAnimator: ValueAnimator? = null
+    private var textColorAnimator: ValueAnimator? = null
+
     var onTabSelected: ((Tab) -> Unit)? = null
 
     enum class Tab {
@@ -159,4 +162,10 @@ class SlidingTabToggleView @JvmOverloads constructor(
     }
 
     fun getSelectedTab(): Tab = selectedTab
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        binding.viewSelectedTabOverlay.animate().cancel()
+    }
+
 }
