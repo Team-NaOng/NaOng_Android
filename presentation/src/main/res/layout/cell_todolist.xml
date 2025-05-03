@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="4dp"
+    android:background="@color/black"
+    android:minHeight="54dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- 아이콘 -->
+        <ImageView
+            android:id="@+id/imageIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:backgroundTint="#F8BDBD"
+            android:src="@drawable/ic_time"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/primary" />
+
+        <!-- 텍스트 영역 -->
+        <LinearLayout
+            android:id="@+id/layoutTextContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/buttonRepeat"
+            app:layout_constraintStart_toEndOf="@id/imageIcon"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="텍스트"
+                android:textAppearance="@style/caption12"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/textTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="00:00"
+                android:textAppearance="@style/caption10"
+                android:textColor="@color/gray3"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <!-- 반복 버튼 -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonRepeat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_cell_in_button"
+            android:includeFontPadding="false"
+            android:minWidth="35dp"
+            android:minHeight="20dp"
+            android:paddingHorizontal="17dp"
+            android:paddingVertical="6dp"
+            android:text="반복"
+            android:textAppearance="@style/caption10"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
