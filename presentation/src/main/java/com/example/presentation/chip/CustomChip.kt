@@ -19,12 +19,7 @@ class CustomChipView @JvmOverloads constructor(
         }
 
     init {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            setTextAppearance(R.style.description)
-        } else {
-            @Suppress("DEPRECATION")
-            setTextAppearance(context, R.style.description)
-        }
+        setTextAppearance(R.style.description)
 
         setPadding(
             17.dpToPx(), 8.dpToPx(),
