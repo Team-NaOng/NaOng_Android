@@ -3,4 +3,5 @@
     <dimen name="indicator_dot_size">8dp</dimen>
     <dimen name="indicator_dot_selected_size">24dp</dimen>
     <dimen name="indicator_dot_margin">8dp</dimen>
+    <dimen name="fab_shrink_width">56dp</dimen>
 </resources>
