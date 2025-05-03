@@ -1,4 +1,4 @@
-package com.example.presentation.tab
+package com.example.presentation.view.tab
 
 import android.animation.ValueAnimator
 import android.content.Context

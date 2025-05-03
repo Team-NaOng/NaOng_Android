@@ -1,4 +1,4 @@
-package com.example.presentation.chip
+package com.example.presentation.view.chip
 
 import android.content.Context
 import android.util.AttributeSet
