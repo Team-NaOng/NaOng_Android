@@ -29,10 +29,6 @@ class CustomChipView @JvmOverloads constructor(
         includeFontPadding = false
         gravity = Gravity.CENTER
 
-        setOnClickListener {
-            isChipSelected = !isChipSelected
-        }
-
         updateBackground()
     }
 

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.presentation.adapter.AdapterTodo
 import com.example.presentation.data.TodoItem
 import com.example.presentation.databinding.FragmentHomeBinding
+import com.example.presentation.view.chip.CustomChipView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -41,6 +42,7 @@ class HomeFragment : Fragment() {
         setupRecyclerView()
         setupFabAnimation()
         applyCustomFabBackground()
+        setupSingleSelectChipGroup()
         binding.fabAddTodo.bringToFront()
     }
     // 셀 없을 때 테스트 코드
@@ -150,6 +152,24 @@ class HomeFragment : Fragment() {
             })
         }
     }
+
+    private fun setupSingleSelectChipGroup() {
+        val chipGroup = binding.viewChips
+        val childCount = chipGroup.childCount
+
+        for (i in 0 until childCount) {
+            val chip = chipGroup.getChildAt(i) as? CustomChipView ?: continue
+
+            chip.setOnClickListener {
+                for (j in 0 until childCount) {
+                    val other = chipGroup.getChildAt(j) as? CustomChipView
+                    other?.isChipSelected = false
+                }
+                chip.isChipSelected = true
+            }
+        }
+    }
+
 
     private fun animateFab(
         fab: ExtendedFloatingActionButton,
