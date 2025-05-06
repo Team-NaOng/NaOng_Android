@@ -178,6 +178,102 @@ class HomeFragment : Fragment() {
         anim.start()
     }
 
+    private fun setupSwipeToDelete(adapter: AdapterTodo) {
+        val swipeCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+
+            override fun onMove(
+                recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ) = false
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                showDeleteConfirmDialog(position, adapter)
+            }
+
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+                val itemView = viewHolder.itemView
+                val context = recyclerView.context
+
+                if (dX < 0) {
+                    val cornerRadius = 8.dpToPxF(context)
+                    val marginLeft = 16.dpToPx(context)
+                    val verticalMargin = 8.dpToPx(context)
+
+                    val top = itemView.top + verticalMargin
+                    val bottom = itemView.bottom - verticalMargin
+
+                    //  완전히 왼쪽으로 슬라이드된 경우에만 마진 적용
+                    val isFullySlid = dX <= -itemView.width.toFloat()
+                    val backgroundLeft =
+                        itemView.right.toFloat() + dX + if (isFullySlid) marginLeft.toFloat() else 0f
+                    val backgroundRight = itemView.right.toFloat()
+
+                    val path = Path().apply {
+                        addRoundRect(
+                            backgroundLeft,
+                            top.toFloat(),
+                            backgroundRight,
+                            bottom.toFloat(),
+                            floatArrayOf(
+                                0f, 0f,
+                                cornerRadius, cornerRadius,
+                                cornerRadius, cornerRadius,
+                                0f, 0f
+                            ),
+                            Path.Direction.CW
+                        )
+                    }
+
+
+                    val backgroundPaint = Paint().apply {
+                        color = ContextCompat.getColor(context, R.color.secondary)
+                        isAntiAlias = true
+                    }
+
+                    c.drawPath(path, backgroundPaint)
+
+                    //  텍스트 중앙 정렬, 배경 경계 안에서 잘리도록 clip
+                    val text = "끝까지 밀어서 삭제하기"
+                    val textPaint = Paint().apply {
+                        color = Color.RED
+                        textSize = 12.dpToPxF(context)
+                        isAntiAlias = true
+                        textAlign = Paint.Align.CENTER
+                        typeface = ResourcesCompat.getFont(context, R.font.notosanskrregular)
+                    }
+
+                    val textX = (backgroundLeft + backgroundRight) / 2f
+                    val textY =
+                        itemView.top + (itemView.height / 2f - (textPaint.descent() + textPaint.ascent()) / 2)
+
+                    c.save()
+                    c.clipRect(backgroundLeft, top.toFloat(), backgroundRight, bottom.toFloat())
+                    c.drawText(text, textX, textY, textPaint)
+                    c.restore()
+                }
+
+                super.onChildDraw(
+                    c,
+                    recyclerView,
+                    viewHolder,
+                    dX,
+                    dY,
+                    actionState,
+                    isCurrentlyActive
+                )
+            }
+        }
+        ItemTouchHelper(swipeCallback).attachToRecyclerView(binding.recyclerView)
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         runnable?.let { handler.removeCallbacks(it) }
