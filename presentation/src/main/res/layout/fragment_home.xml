@@ -56,12 +56,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="전체" />
+                android:text="한 번" />
 
             <com.example.presentation.view.chip.CustomChipView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="전체" />
+                android:text="반복" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
