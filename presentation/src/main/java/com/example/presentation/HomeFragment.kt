@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.presentation.adapter.AdapterTodo
+import com.example.presentation.data.TodoItem
 import com.example.presentation.databinding.FragmentHomeBinding
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.shape.MaterialShapeDrawable
@@ -42,13 +43,62 @@ class HomeFragment : Fragment() {
         applyCustomFabBackground()
         binding.fabAddTodo.bringToFront()
     }
+    // 셀 없을 때 테스트 코드
+    /*  private fun setupRecyclerView() {
+            binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            val adapter = AdapterTodo()
+            binding.recyclerView.adapter = adapter
 
+            val list = listOf(
+                TodoItem("반복 완료", hasRepeat = true, isDone = true),
+                TodoItem("반복 미완료", hasRepeat = true, isDone = false),
+                TodoItem("일반 완료", hasRepeat = false, isDone = true),
+                TodoItem("일반 미완료", hasRepeat = false, isDone = false)
+            )
+
+            adapter.submitList(list)
+
+            val list1 = emptyList<TodoItem>()
+            adapter.submitList(list1)
+            toggleEmptyView(list1.isEmpty())
+        }*/
+
+    // 셀 있을 때 테스트 코드
     private fun setupRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val adapter = AdapterTodo()
         binding.recyclerView.adapter = adapter
-        adapter.submitList(List(30) { "할 일 $it" })
+
+        val list = listOf(
+            // 반복 + 완료 + 시간 있음
+            TodoItem("반복 완료 (시간 있음)", hasRepeat = true, isDone = true, hasTime = true),
+
+            // 반복 + 완료 + 시간 없음
+            TodoItem("반복 완료 (시간 없음)", hasRepeat = true, isDone = true, hasTime = false),
+
+            // 반복 + 미완료 + 시간 있음
+            TodoItem("반복 미완료 (시간 있음)", hasRepeat = true, isDone = false, hasTime = true),
+
+            // 반복 + 미완료 + 시간 없음
+            TodoItem("반복 미완료 (시간 없음)", hasRepeat = true, isDone = false, hasTime = false),
+
+            // 일반 + 완료 + 시간 있음
+            TodoItem("일반 완료 (시간 있음)", hasRepeat = false, isDone = true, hasTime = true),
+
+            // 일반 + 완료 + 시간 없음
+            TodoItem("일반 완료 (시간 없음)", hasRepeat = false, isDone = true, hasTime = false),
+
+            // 일반 + 미완료 + 시간 있음
+            TodoItem("일반 미완료 (시간 있음)", hasRepeat = false, isDone = false, hasTime = true),
+
+            // 일반 + 미완료 + 시간 없음
+            TodoItem("일반 미완료 (시간 없음)", hasRepeat = false, isDone = false, hasTime = false)
+        )
+
+        adapter.submitList(list)
+        toggleEmptyView(list.isEmpty())
     }
+
 
     private fun applyCustomFabBackground() {
         val fab = binding.fabAddTodo
