@@ -124,7 +124,6 @@
         android:layout_marginBottom="32dp"
         android:includeFontPadding="false"
         android:minWidth="94dp"
-        android:minHeight="34dp"
         android:text="할 일 추가"
         android:textAppearance="@style/caption12"
         android:textColor="@color/black"
