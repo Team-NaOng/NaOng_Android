@@ -27,7 +27,7 @@
                 android:id="@+id/viewIconBackground"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_cell_icon" />
+                android:background="@drawable/bg_cell_icon_secondary" />
 
             <ImageView
                 android:id="@+id/imageIcon"
