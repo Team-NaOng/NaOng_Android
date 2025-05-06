@@ -3,36 +3,66 @@ package com.example.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
 import com.example.presentation.R
+import com.example.presentation.data.TodoItem
+import com.example.presentation.databinding.CellTodolistBinding
+import com.example.presentation.showCustomToast
 
 class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
 
-    private val itemList = mutableListOf<String>()  // 테스트용 텍스트
+    private val itemList = mutableListOf<TodoItem>()
 
-    fun submitList(newList: List<String>) {
+    fun submitList(newList: List<TodoItem>) {
         itemList.clear()
         itemList.addAll(newList)
         notifyDataSetChanged()
     }
 
-    inner class TodoViewHolder(private val binding: ViewBinding) :
+    inner class TodoViewHolder(private val binding: CellTodolistBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: String) {
-            binding.root.findViewById<TextView>(R.id.textTitle).text = item
-            binding.root.findViewById<TextView>(R.id.textTime).visibility =
-                if (item.contains("시간없음")) View.GONE else View.VISIBLE
+
+        fun bind(item: TodoItem) {
+            val context = binding.root.context
+
+            binding.textTitle.text = item.title
+            binding.textTime.visibility = if (item.hasTime) View.VISIBLE else View.GONE
+
+            val iconBgRes = when {
+                item.hasRepeat && item.isDone -> R.drawable.bg_cell_icon_primary
+                item.hasRepeat && !item.isDone -> R.drawable.bg_cell_icon_secondary
+                !item.hasRepeat && item.isDone -> R.drawable.bg_cell_icon_gray
+                else -> R.drawable.bg_cell_icon_secondary
+            }
+            binding.viewIconBackground.setBackgroundResource(iconBgRes)
+
+            binding.buttonRepeat.visibility = if (item.hasRepeat) View.VISIBLE else View.GONE
+
+            if (item.isDone) {
+                if (item.hasRepeat) {
+                    // 반복 + 완료 → 텍스트는 기본색 유지, 아이콘만 진핑크 tint
+                    binding.imageIcon.setColorFilter(context.getColor(R.color.secondary))
+                    binding.textTitle.setTextColor(context.getColor(R.color.black))
+                    binding.textTime.setTextColor(context.getColor(R.color.gray3))
+                } else {
+                    // 일반 + 완료 → 회색으로 처리
+                    binding.imageIcon.setColorFilter(context.getColor(R.color.gray3))
+                    binding.textTitle.setTextColor(context.getColor(R.color.gray2))
+                    binding.textTime.setTextColor(context.getColor(R.color.gray2))
+                }
+            } else {
+                // 미완료 상태는 무조건 기본 색
+                binding.imageIcon.setColorFilter(context.getColor(R.color.primary))
+                binding.textTitle.setTextColor(context.getColor(R.color.black))
+                binding.textTime.setTextColor(context.getColor(R.color.gray3))
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.cell_todolist, parent, false)
-        return TodoViewHolder(object : ViewBinding {
-            override fun getRoot(): View = view
-        })
+        val binding =
+            CellTodolistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return TodoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
