@@ -66,7 +66,25 @@ class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-        holder.bind(itemList[position])
+        val item = itemList[position]
+        holder.bind(item)
+
+        holder.itemView.setOnClickListener {
+            item.isDone = !item.isDone
+
+            if (item.isDone) {
+                val messages = listOf(
+                    "할 일 완료! 오늘도 해냈어옹",
+                    "할 일 성공! 오늘도 멋진 하루에옹",
+                    "나옹! 오늘도 미션 클리어에옹",
+                    "나옹! 오늘도 최고에옹"
+                )
+                val randomMessage = messages.random()
+                showCustomToast(holder.itemView, randomMessage)
+            }
+
+            notifyItemChanged(position)
+        }
     }
 
     override fun getItemCount(): Int = itemList.size
