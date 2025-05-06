@@ -69,6 +69,11 @@ class HomeFragment : Fragment() {
         fab.background = shapeDrawable
     }
 
+    private fun toggleEmptyView(isEmpty: Boolean) {
+        binding.recyclerView.visibility = if (isEmpty) View.GONE else View.VISIBLE
+        binding.layoutEmpty.visibility = if (isEmpty) View.VISIBLE else View.GONE
+    }
+
     private fun setupFabAnimation() {
         val fab = binding.fabAddTodo
         val originalText = fab.text
