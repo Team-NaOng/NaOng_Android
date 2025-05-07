@@ -91,6 +91,8 @@ class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
         itemList.removeAt(position)
         notifyItemRemoved(position)
     }
+    fun getItem(position: Int): TodoItem = itemList[position]
+
 
     override fun getItemCount(): Int = itemList.size
 }
