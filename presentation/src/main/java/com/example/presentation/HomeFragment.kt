@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
         setupFabAnimation()
         applyCustomFabBackground()
         setupSingleSelectChipGroup()
+        binding.chipAll.isChipSelected = true
         binding.fabAddTodo.bringToFront()
     }
     // 셀 없을 때 테스트 코드
