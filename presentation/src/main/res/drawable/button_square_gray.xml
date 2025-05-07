@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 눌렸을 때 상태 -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/gray3" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- 기본 활성화 상태 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/gray2" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</selector>
