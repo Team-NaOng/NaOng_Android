@@ -6,6 +6,7 @@ import android.graphics.Paint
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.presentation.R
@@ -72,6 +73,7 @@ abstract class BaseButton @JvmOverloads constructor(
                 LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT
             )
+            gravity = Gravity.CENTER
             textAppearance?.let { setTextAppearance(it) }
             textSize?.let { setTextSize(TypedValue.COMPLEX_UNIT_PX, it) }
             textColor?.let { setTextColor(it) }
@@ -99,6 +101,15 @@ abstract class BaseButton @JvmOverloads constructor(
         super.setPressed(pressed)
         buttonTextView?.isPressed = pressed
     }
+
+    fun setText(text: String) {
+        if (buttonTextView == null) {
+            buttonTextView = TextView(context)
+            addView(buttonTextView)
+        }
+        buttonTextView?.text = text
+    }
+
 
     companion object {
         private const val INVALID_RES_ID = -1
