@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="24dp"
+    android:background="@android:color/transparent"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:includeFontPadding="false"
+            android:textAppearance="@style/descriptionbold"
+            android:visibility="visible"
+            tools:text="삭제 확인" />
+
+        <TextView
+            android:id="@+id/textViewContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="12dp"
+            android:includeFontPadding="false"
+            android:textAppearance="@style/description"
+            android:visibility="visible"
+            tools:text="[나옹팀 점심 약속] 일정을 삭제할까요?" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <com.example.presentation.view.button.ButtonSquare
+                android:id="@+id/btnNegative"
+                android:layout_width="wrap_content"
+                android:layout_height="47dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_square_gray"
+                android:gravity="center"
+                tools:text="취소" />
+
+            <com.example.presentation.view.button.ButtonSquare
+                android:id="@+id/btnPositive"
+                android:layout_width="wrap_content"
+                android:layout_height="47dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_square"
+                tools:text="확인" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
