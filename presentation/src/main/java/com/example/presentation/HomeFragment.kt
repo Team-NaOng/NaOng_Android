@@ -2,6 +2,10 @@ package com.example.presentation
 
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.Path
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,7 +15,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.presentation.adapter.AdapterTodo
@@ -294,6 +300,22 @@ class HomeFragment : Fragment() {
         }
         ItemTouchHelper(swipeCallback).attachToRecyclerView(binding.recyclerView)
     }
+
+    private fun showDeleteConfirmDialog(position: Int, adapter: AdapterTodo) {
+        CustomAlertDialog.Builder(requireContext())
+            .setTitle("정말 삭제하시겠어요?")
+            .setContent("[${adapter.getItem(position).title}] 항목을 삭제할까요?")
+            .setPositiveButton("삭제") {
+                adapter.removeItem(position)
+            }
+            .setNegativeButton("취소") {
+                adapter.notifyItemChanged(position)
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         runnable?.let { handler.removeCallbacks(it) }
