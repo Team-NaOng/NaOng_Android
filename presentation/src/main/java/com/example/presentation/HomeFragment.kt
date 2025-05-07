@@ -76,6 +76,7 @@ class HomeFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val adapter = AdapterTodo()
         binding.recyclerView.adapter = adapter
+        setupSwipeToDelete(adapter)
 
         val list = listOf(
             // 반복 + 완료 + 시간 있음
