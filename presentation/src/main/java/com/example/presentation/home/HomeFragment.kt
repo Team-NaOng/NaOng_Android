@@ -135,7 +135,7 @@ class HomeFragment : Fragment() {
 
                 override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
                     if (!isShrink && (dy > 10 || dy < -10)) {
-                        animateFab(fab, expandedWidth, shrinkWidth, "")
+                        animateFab(fab, expandedWidth, shrinkWidth, getString(R.string.fab_add_todo))
                         isShrink = true
                     }
                     runnable?.let { handler.removeCallbacks(it) }
