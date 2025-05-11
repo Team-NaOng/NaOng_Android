@@ -1,6 +1,6 @@
 package com.example.data.di
 
-import com.example.data.todo.GetFilteredTodoUseCaseImpl
+import com.example.data.todo.ImplementUseCaseGetFilteredTodo
 import com.example.domain.todo.GetFilteredTodoUseCase
 import dagger.Binds
 import dagger.Module
@@ -15,6 +15,6 @@ abstract class TodoModule {
     @Binds
     @Singleton
     abstract fun bindGetFilteredTodoUseCase(
-        impl: GetFilteredTodoUseCaseImpl
+        impl: ImplementUseCaseGetFilteredTodo
     ): GetFilteredTodoUseCase
 }
