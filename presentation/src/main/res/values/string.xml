@@ -19,4 +19,6 @@
     <string name="todo_complete_3">나옹! 오늘도 미션 클리어에옹</string>
     <string name="todo_complete_4">나옹! 오늘도 최고에옹</string>
 
+    <string name="swipe_delete_hint">끝까지 밀어서 삭제하기</string>
+
 </resources>
