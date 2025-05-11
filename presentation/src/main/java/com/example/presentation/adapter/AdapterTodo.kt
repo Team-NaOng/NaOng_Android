@@ -27,6 +27,7 @@ class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
 
             binding.textTitle.text = item.title
             binding.textTime.visibility = if (item.category == "시간") View.VISIBLE else View.GONE
+            binding.textTime.text = item.time
 
             val iconRes = if (item.category == "시간") R.drawable.ic_time else R.drawable.ic_location
             binding.imageIcon.setImageResource(iconRes)

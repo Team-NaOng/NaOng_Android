@@ -5,5 +5,6 @@ data class TodoItem(
     val hasRepeat: Boolean = false,
     var isDone: Boolean = false,
     val hasTime: Boolean = true,
-    val category: String = "위치"
+    val category: String = "위치",
+    val time: String = "00:00",
 )

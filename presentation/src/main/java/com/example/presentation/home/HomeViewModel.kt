@@ -22,10 +22,10 @@ class HomeViewModel @Inject constructor(
         TodoItem("카페 가기", false, true, true, "위치"),
         TodoItem("헬스장 등록", true, true, true, "위치"),
         TodoItem("마트 장보기", false, false, true, "위치"),
-        TodoItem("공부하기", false, false, true, "시간"),
-        TodoItem("요가 클래스", true, true, true, "시간"),
-        TodoItem("영어 회화 수업", true, false, true, "시간"),
-        TodoItem("독서", false, true, true, "시간")
+        TodoItem("공부하기", false, false, true, "시간", "11:00"),
+        TodoItem("요가 클래스", true, true, true, "시간", "23:20"),
+        TodoItem("영어 회화 수업", true, false, true, "시간", "10:00"),
+        TodoItem("독서", false, true, true, "시간", "06:30")
     )
 
     var selectedMainCategory = "전체"
