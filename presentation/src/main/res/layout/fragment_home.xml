@@ -131,7 +131,7 @@
         android:textColor="@color/black"
         app:icon="@drawable/ic_plus"
         app:iconGravity="textEnd"
-        app:iconPadding="4dp"
+        app:iconPadding="5dp"
         app:iconSize="14dp"
         app:iconTint="@color/black" />
 
