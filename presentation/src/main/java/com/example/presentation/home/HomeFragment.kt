@@ -11,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -51,6 +53,11 @@ class HomeFragment : Fragment() {
         setupFabAnimation()
         applyCustomFabBackground()
 
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
+            val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+            binding.textViewToday.setPadding(0, statusBarHeight, 0, 0)
+            insets
+        }
 
         viewModel.todoList.observe(viewLifecycleOwner) { list ->
             adapter.submitList(list)
