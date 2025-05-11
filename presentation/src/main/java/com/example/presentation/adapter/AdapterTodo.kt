@@ -49,10 +49,12 @@ class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
 
             binding.buttonRepeat.visibility = if (item.hasRepeat) View.VISIBLE else View.GONE
 
-            if (item.isDone) {
+            if (item.isDone && !item.hasRepeat) {
+                // 완료 && 반복 아님 → 색상 변경
                 binding.textTitle.setTextColor(context.getColor(R.color.gray2))
                 binding.textTime.setTextColor(context.getColor(R.color.gray2))
             } else {
+                // 반복인 경우나 미완료인 경우 → 원래 색상 유지
                 binding.textTitle.setTextColor(context.getColor(R.color.black))
                 binding.textTime.setTextColor(context.getColor(R.color.gray3))
             }
