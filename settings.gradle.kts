@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "NaOng_Android"
 include(":app")
 include(":presentation")
+include(":domain")
+include(":data")
