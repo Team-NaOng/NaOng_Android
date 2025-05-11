@@ -29,6 +29,9 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -47,6 +50,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupTodayDate()
         setupRecyclerView()
         setupTopTabToggle()
         setupSingleSelectChipGroup()
@@ -210,6 +214,12 @@ class HomeFragment : Fragment() {
             elevation = fab.elevation
         }
         fab.background = shapeDrawable
+    }
+
+    private fun setupTodayDate() {
+        val today = LocalDate.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일", Locale.KOREAN)
+        binding.textViewToday.text = today.format(formatter)
     }
 
 
