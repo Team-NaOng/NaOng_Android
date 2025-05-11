@@ -60,15 +60,15 @@ class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
                 item.isDone = !item.isDone
 
                 if (item.isDone) {
+                    val context = itemView.context
                     val messages = listOf(
-                        "할 일 완료! 오늘도 해냈어옹",
-                        "할 일 성공! 오늘도 멋진 하루에옹",
-                        "나옹! 오늘도 미션 클리어에옹",
-                        "나옹! 오늘도 최고에옹"
+                        context.getString(R.string.todo_complete_1),
+                        context.getString(R.string.todo_complete_2),
+                        context.getString(R.string.todo_complete_3),
+                        context.getString(R.string.todo_complete_4)
                     )
                     showCustomToast(itemView, messages.random())
                 }
-
                 notifyItemChanged(adapterPosition)
             }
         }

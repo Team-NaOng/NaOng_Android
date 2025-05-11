@@ -183,17 +183,17 @@ class HomeFragment : Fragment() {
 
     private fun showDeleteConfirmDialog(position: Int) {
         CustomAlertDialog.Builder(requireContext())
-            .setTitle("정말 삭제하시겠어요?")
-            .setContent("[${adapter.getItem(position).title}] 항목을 삭제할까요?")
-            .setPositiveButton("삭제") {
+            .setTitle(getString(R.string.delete_confirm_title))
+            .setContent(getString(R.string.delete_confirm_content, adapter.getItem(position).title))
+            .setPositiveButton(getString(R.string.delete_confirm_positive)) {
                 adapter.removeItem(position)
                 if (adapter.itemCount == 0) {
                     binding.recyclerView.visibility = View.GONE
                     binding.layoutEmpty.visibility = View.VISIBLE
                 }
-                showCustomToast(binding.root, "삭제되었습니다.")
+                showCustomToast(binding.root, getString(R.string.delete_success))
             }
-            .setNegativeButton("취소") {
+            .setNegativeButton(getString(R.string.delete_confirm_negative)) {
                 adapter.notifyItemChanged(position) // 스와이프 복구
             }
             .setCancelable(false)
