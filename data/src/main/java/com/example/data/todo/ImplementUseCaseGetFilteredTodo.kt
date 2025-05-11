@@ -1,10 +1,10 @@
 package com.example.data.todo
 
-import com.example.domain.todo.GetFilteredTodoUseCase
+import com.example.domain.todo.UseCaseGetFilteredTodo
 import com.example.domain.todo.TodoItem
 import javax.inject.Inject
 
-class ImplementUseCaseGetFilteredTodo @Inject constructor() : GetFilteredTodoUseCase {
+class ImplementUseCaseGetFilteredTodo @Inject constructor() : UseCaseGetFilteredTodo {
     override fun execute(
         allTodoList: List<TodoItem>,
         category: String,

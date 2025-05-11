@@ -3,14 +3,14 @@ package com.example.presentation.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.domain.todo.GetFilteredTodoUseCase
+import com.example.domain.todo.UseCaseGetFilteredTodo
 import com.example.domain.todo.TodoItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getFilteredTodoUseCase: GetFilteredTodoUseCase
+    private val useCaseGetFilteredTodo: UseCaseGetFilteredTodo
 ) : ViewModel() {
 
     private val _todoList = MutableLiveData<List<TodoItem>>()
@@ -32,7 +32,7 @@ class HomeViewModel @Inject constructor(
     var selectedSubCategory = "전체"
 
     fun filterTodoList() {
-        _todoList.value = getFilteredTodoUseCase.execute(
+        _todoList.value = useCaseGetFilteredTodo.execute(
             allTodoList, selectedMainCategory, selectedSubCategory
         )
     }
