@@ -136,13 +136,13 @@ class HomeFragment : Fragment() {
 
                 override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
                     if (!isShrink && (dy > 10 || dy < -10)) {
-                        animateFab(fab, expandedWidth, shrinkWidth, getString(R.string.fab_add_todo))
+                        animateFab(fab, expandedWidth, shrinkWidth, "")
                         isShrink = true
                     }
                     runnable?.let { handler.removeCallbacks(it) }
                     runnable = Runnable {
                         if (isShrink) {
-                            animateFab(fab, shrinkWidth, expandedWidth, fab.text.toString())
+                            animateFab(fab, shrinkWidth, expandedWidth, getString(R.string.fab_add_todo))
                             isShrink = false
                         }
                     }.also { handler.postDelayed(it, 1000L) }
