@@ -43,33 +43,35 @@ class CustomAlertDialog private constructor(
                 .setCancelable(isCancelable)
                 .create()
 
-            title?.let {
-                binding.textViewTitle.text = it
-                binding.textViewTitle.visibility = View.VISIBLE
-            }
-
-            content?.let {
-                binding.textViewContent.text = it
-                binding.textViewContent.visibility = View.VISIBLE
-            }
-
-            binding.btnPositive.apply {
-                setText(positiveText ?: "확인")
-                setOnClickListener {
-                    onPositiveClick?.invoke()
-                    dialog.dismiss()
+            with(binding) {
+                title?.let {
+                    textViewTitle.text = it
+                    textViewTitle.visibility = View.VISIBLE
                 }
-            }
 
-            binding.btnNegative.apply {
-                if (negativeText != null) {
-                    setText(negativeText ?: "취소")
+                content?.let {
+                    textViewContent.text = it
+                    textViewContent.visibility = View.VISIBLE
+                }
+
+                btnPositive.apply {
+                    setText(positiveText ?: "확인")
                     setOnClickListener {
-                        onNegativeClick?.invoke()
+                        onPositiveClick?.invoke()
                         dialog.dismiss()
                     }
-                } else {
-                    visibility = View.GONE
+                }
+
+                btnNegative.apply {
+                    if (negativeText != null) {
+                        setText(negativeText ?: "취소")
+                        setOnClickListener {
+                            onNegativeClick?.invoke()
+                            dialog.dismiss()
+                        }
+                    } else {
+                        visibility = View.GONE
+                    }
                 }
             }
 
