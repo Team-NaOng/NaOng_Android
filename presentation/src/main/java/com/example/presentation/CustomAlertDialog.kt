@@ -75,7 +75,7 @@ class CustomAlertDialog private constructor(
 
             dialog.show()
             dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-            val marginHorizontalPx = (24 * context.resources.displayMetrics.density).toInt()
+            val marginHorizontalPx = 24.dpToPx(context)
             dialog.window?.setLayout(
                 context.resources.displayMetrics.widthPixels - (marginHorizontalPx * 2),
                 ViewGroup.LayoutParams.WRAP_CONTENT
