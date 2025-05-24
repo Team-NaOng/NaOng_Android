@@ -40,7 +40,7 @@ class CustomAlertDialog private constructor(
 
             val dialog = AlertDialog.Builder(context)
                 .setView(view)
-                .setCancelable(false)
+                .setCancelable(isCancelable)
                 .create()
 
             title?.let {
