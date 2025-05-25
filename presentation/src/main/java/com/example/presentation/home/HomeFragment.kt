@@ -181,22 +181,24 @@ class HomeFragment : Fragment() {
     }
 
     private fun showDeleteConfirmDialog(position: Int) {
-        CustomAlertDialog.Builder(requireContext())
-            .setTitle(getString(R.string.delete_confirm_title))
-            .setContent(getString(R.string.delete_confirm_content, adapter.getItem(position).title))
-            .setPositiveButton(getString(R.string.delete_confirm_positive)) {
-                adapter.removeItem(position)
-                if (adapter.itemCount == 0) {
-                    binding.recyclerView.visibility = View.GONE
-                    binding.layoutEmpty.visibility = View.VISIBLE
+        adapter.getItem(position)?.let { item ->
+            CustomAlertDialog.Builder(requireContext())
+                .setTitle(getString(R.string.delete_confirm_title))
+                .setContent(getString(R.string.delete_confirm_content, item.title))
+                .setPositiveButton(getString(R.string.delete_confirm_positive)) {
+                    adapter.removeItem(position)
+                    if (adapter.itemCount == 0) {
+                        binding.recyclerView.visibility = View.GONE
+                        binding.layoutEmpty.visibility = View.VISIBLE
+                    }
+                    showCustomToast(binding.root, getString(R.string.delete_success))
                 }
-                showCustomToast(binding.root, getString(R.string.delete_success))
-            }
-            .setNegativeButton(getString(R.string.delete_confirm_negative)) {
-                adapter.notifyItemChanged(position) // 스와이프 복구
-            }
-            .setCancelable(false)
-            .show()
+                .setNegativeButton(getString(R.string.delete_confirm_negative)) {
+                    adapter.notifyItemChanged(position) // 스와이프 복구
+                }
+                .setCancelable(false)
+                .show()
+        }
     }
 
     private fun applyCustomFabBackground() {
