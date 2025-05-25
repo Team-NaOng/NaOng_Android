@@ -59,6 +59,7 @@ class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
                     textTime.setTextColor(context.getColor(R.color.gray3))
                 }
 
+                // TODO SeungHyun isDone 상태 변경 로직은 ViewModel로 이동하여 단방향 데이터 흐름으로 리팩토링할 것
                 root.setOnClickListener {
                     item.isDone = !item.isDone
 
