@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:includeFontPadding="false"
-        android:text="할 일 완룡!"
+        android:text="@string/todo_complete_1"
         android:textAppearance="@style/caption12"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@id/imageIcon"
