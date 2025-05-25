@@ -3,6 +3,7 @@ package com.example.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.todo.TodoItem
 import com.example.presentation.R
@@ -11,14 +12,14 @@ import com.example.presentation.showCustomToast
 
 class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
 
-    private val itemList = mutableListOf<TodoItem>()
+    private var itemList: List<TodoItem> = emptyList()
 
     fun submitList(newList: List<TodoItem>) {
-        itemList.clear()
-        itemList.addAll(newList)
-        notifyDataSetChanged()
+        val diffCallback = TodoDiffCallback(itemList, newList)
+        val diffResult = DiffUtil.calculateDiff(diffCallback)
+        itemList = newList.toList()
+        diffResult.dispatchUpdatesTo(this)
     }
-
     inner class TodoViewHolder(private val binding: CellTodolistBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -90,7 +91,7 @@ class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
 
     fun removeItem(position: Int) {
         if (position !in itemList.indices) return
-        itemList.removeAt(position)
+        itemList = itemList.toMutableList().apply { removeAt(position) }
         notifyItemRemoved(position)
     }
 
@@ -99,4 +100,26 @@ class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
         return itemList.getOrNull(position)
     }
     override fun getItemCount(): Int = itemList.size
+
+    private class TodoDiffCallback(
+        private val oldList: List<TodoItem>,
+        private val newList: List<TodoItem>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            val old = oldList[oldItemPosition]
+            val new = newList[newItemPosition]
+
+            return old.title == new.title &&
+                    old.category == new.category &&
+                    old.time == new.time
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
+    }
 }
