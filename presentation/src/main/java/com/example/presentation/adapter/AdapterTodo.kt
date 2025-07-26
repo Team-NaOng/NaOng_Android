@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.domain.todo.TodoItem
+import com.example.domain.todo.model.TodoItem
 import com.example.presentation.R
 import com.example.presentation.databinding.CellTodolistBinding
 import com.example.presentation.showCustomToast

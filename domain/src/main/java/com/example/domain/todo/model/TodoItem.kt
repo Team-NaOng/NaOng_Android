@@ -1,4 +1,4 @@
-package com.example.domain.todo
+package com.example.domain.todo.model
 
 data class TodoItem(
     val title: String,
