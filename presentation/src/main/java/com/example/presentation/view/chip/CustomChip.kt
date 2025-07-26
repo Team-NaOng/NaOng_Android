@@ -6,6 +6,7 @@ import android.view.Gravity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import com.example.presentation.R
+import com.example.presentation.dpToPx
 
 class CustomChipView @JvmOverloads constructor(
     context: Context,
@@ -22,15 +23,11 @@ class CustomChipView @JvmOverloads constructor(
         setTextAppearance(R.style.description)
 
         setPadding(
-            17.dpToPx(), 8.dpToPx(),
-            17.dpToPx(), 8.dpToPx()
+            17.dpToPx(context), 8.dpToPx(context),
+            17.dpToPx(context), 8.dpToPx(context)
         )
         includeFontPadding = false
         gravity = Gravity.CENTER
-
-        setOnClickListener {
-            isChipSelected = !isChipSelected
-        }
 
         updateBackground()
     }
@@ -41,9 +38,5 @@ class CustomChipView @JvmOverloads constructor(
         } else {
             ContextCompat.getDrawable(context, R.drawable.chip_unselected)
         }
-    }
-
-    private fun Int.dpToPx(): Int {
-        return (this * context.resources.displayMetrics.density).toInt()
     }
 }

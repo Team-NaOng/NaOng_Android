@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="delete_confirm_title">정말 삭제하시겠어요?</string>
+    <string name="delete_confirm_content">[%1$s] 항목을 삭제할까요?</string>
+    <string name="delete_confirm_positive">삭제</string>
+    <string name="delete_confirm_negative">취소</string>
+    <string name="delete_success">삭제되었습니다.</string>
+
+    <string name="chip_category_all">전체</string>
+    <string name="chip_category_once">한 번</string>
+    <string name="chip_category_repeat">반복</string>
+
+    <string name="fab_add_todo">할 일 추가</string>
+
+    <string name="empty_message">등록된 할 일이 없어요!</string>
+
+    <string name="todo_complete_1">할 일 완료! 오늘도 해냈어옹</string>
+    <string name="todo_complete_2">할 일 성공! 오늘도 멋진 하루에옹</string>
+    <string name="todo_complete_3">나옹! 오늘도 미션 클리어에옹</string>
+    <string name="todo_complete_4">나옹! 오늘도 최고에옹</string>
+
+    <string name="swipe_delete_hint">끝까지 밀어서 삭제하기</string>
+
+</resources>
