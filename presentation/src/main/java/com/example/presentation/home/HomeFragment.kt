@@ -47,6 +47,9 @@ import java.util.Locale
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+    private var scrollHandler: Handler? = null
+    private var scrollRunnable: Runnable? = null
+
 
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var adapter: AdapterTodo
@@ -131,9 +134,10 @@ class HomeFragment : Fragment() {
         fab.post {
             val expandedWidth = fab.width
             val shrinkWidth = resources.getDimensionPixelSize(R.dimen.fab_shrink_width)
+
+            scrollHandler = Handler(Looper.getMainLooper())
+
             binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                private val handler = Handler(Looper.getMainLooper())
-                private var runnable: Runnable? = null
                 private var isShrink = false
 
                 override fun onScrolled(rv: RecyclerView, dx: Int, dy: Int) {
@@ -141,13 +145,16 @@ class HomeFragment : Fragment() {
                         animateFab(fab, expandedWidth, shrinkWidth, "")
                         isShrink = true
                     }
-                    runnable?.let { handler.removeCallbacks(it) }
-                    runnable = Runnable {
+
+                    scrollRunnable?.let { scrollHandler?.removeCallbacks(it) }
+                    scrollRunnable = Runnable {
                         if (isShrink) {
                             animateFab(fab, shrinkWidth, expandedWidth, getString(R.string.fab_add_todo))
                             isShrink = false
                         }
-                    }.also { handler.postDelayed(it, 1000L) }
+                    }.also {
+                        scrollHandler?.postDelayed(it, 1000L)
+                    }
                 }
             })
         }
@@ -228,6 +235,10 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+
+        scrollRunnable?.let { scrollHandler?.removeCallbacks(it) }
+        scrollRunnable = null
+        scrollHandler = null
         _binding = null
     }
 }
