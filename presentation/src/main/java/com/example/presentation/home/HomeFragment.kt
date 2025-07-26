@@ -23,6 +23,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.todo.model.RepeatType
+import com.example.domain.todo.model.TodoCategory
 import com.example.presentation.CustomAlertDialog
 import com.example.presentation.R
 import com.example.presentation.adapter.AdapterTodo
@@ -90,9 +92,9 @@ class HomeFragment : Fragment() {
 
     private fun setupTopTabToggle() {
         binding.viewSlidingTabToggle.onTabSelected = { tab ->
-            viewModel.selectedMainCategory = when (tab) {
-                SlidingTabToggleView.Tab.LOCATION -> "위치"
-                SlidingTabToggleView.Tab.TIME -> "시간"
+            viewModel.selectedCategory = when (tab) {
+                SlidingTabToggleView.Tab.LOCATION -> TodoCategory.LOCATION.value
+                SlidingTabToggleView.Tab.TIME -> TodoCategory.TIME.value
             }
             resetChipSelectionToAll()
             viewModel.filterTodoList()
@@ -105,7 +107,7 @@ class HomeFragment : Fragment() {
             val chip = chipGroup.getChildAt(i) as? CustomChipView ?: continue
             chip.isChipSelected = chip.id == R.id.chipAll
         }
-        viewModel.selectedSubCategory = "전체"
+        viewModel.selectedRepeatType = RepeatType.ALL.value
     }
 
     private fun setupSingleSelectChipGroup() {
@@ -118,7 +120,7 @@ class HomeFragment : Fragment() {
                     other?.isChipSelected = false
                 }
                 chip.isChipSelected = true
-                viewModel.selectedSubCategory = chip.text.toString()
+                viewModel.selectedRepeatType = RepeatType.fromString(chip.text.toString()).value
                 viewModel.filterTodoList()
             }
         }

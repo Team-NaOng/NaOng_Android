@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.todo.UseCaseGetFilteredTodo
-import com.example.domain.todo.TodoItem
+import com.example.domain.todo.model.RepeatType
+import com.example.domain.todo.model.TodoCategory
+import com.example.domain.todo.model.TodoItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -28,12 +30,13 @@ class HomeViewModel @Inject constructor(
         TodoItem("독서", false, true, true, "시간", "06:30")
     )
 
-    var selectedMainCategory = "전체"
-    var selectedSubCategory = "전체"
+    var selectedCategory: String = TodoCategory.LOCATION.value
+    var selectedRepeatType: String = RepeatType.ALL.value
+
 
     fun filterTodoList() {
         _todoList.value = useCaseGetFilteredTodo.execute(
-            allTodoList, selectedMainCategory, selectedSubCategory
+            allTodoList, selectedCategory, selectedRepeatType
         )
     }
 }
