@@ -17,7 +17,8 @@ class ImplementUseCaseGetFilteredTodo @Inject constructor() : UseCaseGetFiltered
         val repeatEnum = RepeatType.fromString(repeatType)
 
         return allTodoList.filter { item ->
-            val categoryMatch = item.category == categoryEnum.value
+            val categoryMatch = item.category == categoryEnum
+
 
             val repeatMatch = when (repeatEnum) {
                 RepeatType.ALL -> true

@@ -20,15 +20,16 @@ class HomeViewModel @Inject constructor(
 
     // todo 테스트를 위한 임시 코드입니다
     private val allTodoList = listOf(
-        TodoItem("산책 가기", true, false, true, "위치"),
-        TodoItem("카페 가기", false, true, true, "위치"),
-        TodoItem("헬스장 등록", true, true, true, "위치"),
-        TodoItem("마트 장보기", false, false, true, "위치"),
-        TodoItem("공부하기", false, false, true, "시간", "11:00"),
-        TodoItem("요가 클래스", true, true, true, "시간", "23:20"),
-        TodoItem("영어 회화 수업", true, false, true, "시간", "10:00"),
-        TodoItem("독서", false, true, true, "시간", "06:30")
+        TodoItem("산책 가기", true, false, true, TodoCategory.LOCATION),
+        TodoItem("카페 가기", false, true, true, TodoCategory.LOCATION),
+        TodoItem("헬스장 등록", true, true, true, TodoCategory.LOCATION),
+        TodoItem("마트 장보기", false, false, true, TodoCategory.LOCATION),
+        TodoItem("공부하기", false, false, true, TodoCategory.TIME, "11:00"),
+        TodoItem("요가 클래스", true, true, true, TodoCategory.TIME, "23:20"),
+        TodoItem("영어 회화 수업", true, false, true, TodoCategory.TIME, "10:00"),
+        TodoItem("독서", false, true, true, TodoCategory.TIME, "06:30")
     )
+
 
     var selectedCategory: String = TodoCategory.LOCATION.value
     var selectedRepeatType: String = RepeatType.ALL.value

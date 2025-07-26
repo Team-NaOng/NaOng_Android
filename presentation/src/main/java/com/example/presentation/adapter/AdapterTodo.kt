@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.domain.todo.model.TodoCategory
 import com.example.domain.todo.model.TodoItem
 import com.example.presentation.R
 import com.example.presentation.databinding.CellTodolistBinding
@@ -28,11 +29,10 @@ class AdapterTodo : RecyclerView.Adapter<AdapterTodo.TodoViewHolder>() {
 
             with(binding) {
                 textTitle.text = item.title
-                textTime.visibility = if (item.category == "시간") View.VISIBLE else View.GONE
+                textTime.visibility = if (item.category == TodoCategory.TIME) View.VISIBLE else View.GONE
                 textTime.text = item.time
 
-                val iconRes =
-                    if (item.category == "시간") R.drawable.ic_time else R.drawable.ic_location
+                val iconRes = if (item.category == TodoCategory.TIME) R.drawable.ic_time else R.drawable.ic_location
                 imageIcon.setImageResource(iconRes)
 
                 val iconBgRes = when {

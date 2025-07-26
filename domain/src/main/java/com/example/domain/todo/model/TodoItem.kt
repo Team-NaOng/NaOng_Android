@@ -2,9 +2,9 @@ package com.example.domain.todo.model
 
 data class TodoItem(
     val title: String,
-    val hasRepeat: Boolean = false,
-    var isDone: Boolean = false,
-    val hasTime: Boolean = true,
-    val category: String = "위치",
-    val time: String = "00:00",
+    val hasRepeat: Boolean,
+    var isDone: Boolean,
+    val isToday: Boolean,
+    val category: TodoCategory, // 여기 바뀜
+    val time: String? = null
 )
