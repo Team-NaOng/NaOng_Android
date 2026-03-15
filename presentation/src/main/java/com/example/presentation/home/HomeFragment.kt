@@ -2,10 +2,6 @@ package com.example.presentation.home
 
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Path
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -15,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -25,14 +20,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.todo.model.RepeatType
 import com.example.domain.todo.model.TodoCategory
+import com.example.presentation.AddTodoBottomSheetFragment
 import com.example.presentation.CustomAlertDialog
 import com.example.presentation.R
 import com.example.presentation.adapter.AdapterTodo
 import com.example.presentation.databinding.FragmentHomeBinding
-import com.example.presentation.dpToPx
-import com.example.presentation.dpToPxF
 import com.example.presentation.helper.SwipeToDeleteCallback
 import com.example.presentation.showCustomToast
+import com.example.presentation.util.getTodayDateText
 import com.example.presentation.view.chip.CustomChipView
 import com.example.presentation.view.tab.SlidingTabToggleView
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -69,6 +64,10 @@ class HomeFragment : Fragment() {
         setupSingleSelectChipGroup()
         setupFabAnimation()
         applyCustomFabBackground()
+
+        binding.fabAddTodo.setOnClickListener {
+            AddTodoBottomSheetFragment().show(parentFragmentManager, "AddTodoBottomSheet")
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
             val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
