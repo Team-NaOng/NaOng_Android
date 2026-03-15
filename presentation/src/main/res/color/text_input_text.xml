@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- DISABLE -->
+    <item android:color="@color/gray2" android:state_enabled="false" />
+
+    <!-- FOCUS -->
+    <item android:color="@color/gray3" android:state_focused="true" />
+
+    <!-- NORMAL -->
+    <item android:color="@color/gray2" />
+
+</selector>
