@@ -227,9 +227,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupTodayDate() {
-        val today = LocalDate.now()
-        val formatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일", Locale.KOREAN)
-        binding.textViewToday.text = today.format(formatter)
+        binding.textViewToday.text = getTodayDateText()
     }
 
 
