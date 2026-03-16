@@ -83,4 +83,11 @@
         <item name="itemRippleColor">@android:color/transparent</item>
     </style>
 
+    <style name="MaterialCardView.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
 </resources>
